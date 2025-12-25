@@ -34,7 +34,7 @@ export function Sidebar() {
             <div className="flex h-full flex-col">
                 {/* Logo */}
                 <div className="flex h-16 items-center gap-3 border-b px-6">
-                    <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-teal-600">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-linear-to-r from-(--gradient-start) to-(--gradient-end)">
                         <GraduationCap className="h-6 w-6 text-white" />
                     </div>
                     <div>
@@ -52,9 +52,9 @@ export function Sidebar() {
                                 key={item.href}
                                 href={item.href}
                                 className={cn(
-                                    'flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-colors',
+                                    'flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-all',
                                     item.active
-                                        ? 'bg-teal-600 text-white'
+                                        ? 'bg-linear-to-r from-(--gradient-start) to-(--gradient-end) text-white shadow-lg shadow-primary/30'
                                         : 'text-muted-foreground hover:bg-accent hover:text-accent-foreground'
                                 )}
                             >
