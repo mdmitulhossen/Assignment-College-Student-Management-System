@@ -22,7 +22,7 @@ function GenderBar({ label, count, percentage, colorClass }: GenderBarProps) {
             <div className="flex items-center justify-between mb-2">
                 <span className="font-medium">{label}</span>
                 <span className="font-bold">
-                    {count} <span className='text-primary font-normal'>({percentage}%)</span>
+                    {count} <span className='text-primary font-medium'>({percentage}%)</span>
                 </span>
             </div>
             <div className="h-3 w-full bg-primary/10 dark:bg-gray-700 rounded-full overflow-hidden">
