@@ -64,22 +64,23 @@ const SideBar = () => {
 
                     {/* Logo */}
                     <div className={cn(
-                        "flex items-center border-b py-6",
+                        "flex flex-col items-center pt-5 pb-4",
                         isExpanded ? "gap-3 px-6" : "gap-3 px-6 lg:justify-center lg:px-4"
                     )}>
                         <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-linear-to-r from-(--gradient-start) to-(--gradient-end) shadow-md shadow-primary/30">
                             <GraduationCap className="h-8 w-8 text-white" />
                         </div>
                         <div className={cn(
-                            isExpanded ? "block" : "block lg:hidden"
+                            isExpanded ? "block" : "block lg:hidden",
+                            'text-center'
                         )}>
-                            <h1 className="text-xl xl:text-2xl font-bold">College Student</h1>
+                            <h1 className="text-xl xl:text-2xl font-bold text-primary ">College Student</h1>
                             <p className="text-base text-muted-foreground">Management System</p>
                         </div>
                     </div>
 
                     {/* Navigation */}
-                    <nav className="flex-1 space-y-1 p-4 mt-3">
+                    <nav className="flex-1 space-y-2 p-4">
                         {menuItems.map((item) => {
                             const Icon = item.icon;
                             return (
@@ -89,7 +90,7 @@ const SideBar = () => {
                                     onClick={closeMobileSidebar}
                                     className={cn(
                                         'group relative flex items-center rounded-lg font-medium transition-colors',
-                                        isExpanded ? 'gap-3 px-3 py-3.5 text-lg' : 'gap-3 px-3 py-3.5 text-lg lg:justify-center',
+                                        isExpanded ? 'gap-3 px-5 py-3.5 text-lg' : 'gap-3 px-3 py-3.5 text-lg lg:justify-center',
                                         item.active
                                             ? 'bg-linear-to-r from-(--gradient-start) to-(--gradient-end) text-white shadow-lg shadow-primary/30'
                                             : 'text-muted-foreground hover:bg-accent hover:text-accent-foreground'

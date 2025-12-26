@@ -49,12 +49,12 @@ const TopBar = ({ subtitle }: TopBarProps) => {
 
             <div className="flex-1">
                 <div className="flex items-center gap-2">
-                    <h1 className="text-xl sm:text-2xl 2xl:text-3xl font-bold bg-linear-to-r from-(--gradient-start) to-(--gradient-end) bg-clip-text text-transparent">
+                    <h1 className="text-xl sm:text-2xl font-bold bg-linear-to-r from-(--gradient-start) to-(--gradient-end) bg-clip-text text-transparent">
                         {getGreeting()}
                     </h1>
                     <span className="text-lg sm:text-xl xl:text-2xl hidden sm:block">👋</span>
                 </div>
-                <p className="mt-1 text-xs sm:text-sm text-muted-foreground hidden sm:block">{getCurrentDate()}</p>
+                <p className="mt-1 text-xs sm:text-sm 2xl:text-base text-muted-foreground hidden sm:block">{getCurrentDate()}</p>
                 {subtitle && <p className="mt-2 text-sm lg:text-base font-medium text-foreground">{subtitle}</p>}
             </div>
 
@@ -62,18 +62,18 @@ const TopBar = ({ subtitle }: TopBarProps) => {
                 {/* Theme Toggle */}
                 <button
                     onClick={toggleTheme}
-                    className="flex p-1.5 md:p-3.5 items-center justify-center rounded-lg hover:bg-accent transition-colors group bg-gray-100 dark:bg-gray-800 shadow cursor-pointer"
+                    className="flex p-1.5 md:p-2 items-center justify-center rounded-lg hover:bg-accent transition-colors group cursor-pointer border border-gray-200 dark:border-gray-700"
                     aria-label="Toggle theme"
                 >
                     {resolvedTheme === 'dark' ? (
                         <Sun className="md:h-7 md:w-7 w-5 h-5 text-primary/70 group-hover:text-primary transition-colors" />
                     ) : (
-                        <Moon className="md:h-7 md:w-7 w-5 h-5 text-primary/70 group-hover:text-primary transition-colors" />
+                        <Moon className="md:h-6 md:w-6 w-5 h-5 text-primary/70 group-hover:text-primary transition-colors" />
                     )}
                 </button>
 
                 {/* Desktop View */}
-                <div className="hidden md:flex items-center gap-3 rounded-lg px-3 sm:px-5 py-2.5 bg-gray-100 dark:bg-gray-800 shadow">
+                <div className="hidden md:flex items-center gap-3 rounded-lg px-3 sm:px-5 py-2.5">
                     <div className="flex h-8 w-8 sm:h-10 sm:w-10 items-center justify-center rounded-full bg-linear-to-r from-(--gradient-start) to-(--gradient-end) text-white font-semibold shadow-md text-sm">
                         A
                     </div>

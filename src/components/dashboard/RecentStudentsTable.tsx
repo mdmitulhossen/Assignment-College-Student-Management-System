@@ -5,10 +5,10 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { DataTable, type Column } from '@/components/ui/data-table';
 import { useRecentStudents } from '@/hooks/useRecentStudents';
-import { getAvatarColor, getHobbyFromEmail } from '@/lib/dashboard.constants';
+import { getHobbyFromEmail } from '@/lib/dashboard.constants';
 import { type Student } from '@/store/student-store';
-import { calculateAge, formatDate, getInitials } from '@/utils/format.utils';
-import { ArrowRight } from 'lucide-react';
+import { calculateAge, formatDate } from '@/utils/format.utils';
+import { Edit, Eye, Trash, User } from 'lucide-react';
 import Link from 'next/link';
 
 export function RecentStudentsTable() {
@@ -22,13 +22,14 @@ export function RecentStudentsTable() {
                 return (
                     <div className="flex items-center gap-3">
                         <div
-                            className={`h-10 w-10 rounded-full ${getAvatarColor(index)} flex items-center justify-center text-white font-semibold shrink-0`}
+                            className={`h-10 w-10 rounded-full bg-teal-50 flex items-center justify-center text-white font-semibold shrink-0`}
                         >
-                            {getInitials(student.name)}
+                            {/* {getInitials(student.name)} */}
+                            <User className="h-6 w-6 text-teal-950" />
                         </div>
                         <div>
                             <p className="font-semibold">{student.name}</p>
-                            <p className="text-sm text-muted-foreground">{student.gender}</p>
+                            {/* <p className="text-sm text-muted-foreground">{student.gender}</p> */}
                         </div>
                     </div>
                 );
@@ -40,6 +41,16 @@ export function RecentStudentsTable() {
             cell: (student) => <p className="text-sm">{student.course}</p>,
         },
         {
+            header: 'Joined',
+            cell: (student) => (
+                <p className="text-sm text-muted-foreground">{formatDate(student.createdAt)}</p>
+            ),
+        },
+        {
+            header: 'Gender',
+            cell: (student) => <p className="text-sm">{student.gender}</p>,
+        },
+        {
             header: 'Age',
             cell: (student) => <p className="text-sm">{calculateAge(student.createdAt)}</p>,
         },
@@ -47,28 +58,22 @@ export function RecentStudentsTable() {
             header: 'Hobby',
             cell: (student) => (
                 <span className="inline-block px-3 py-1 bg-purple-100 text-purple-600 dark:bg-purple-900/30 dark:text-purple-400 rounded-full text-sm font-medium">
-                    {getHobbyFromEmail(student.email)}
+                    {getHobbyFromEmail(student.email || '')}
                 </span>
-            ),
-        },
-        {
-            header: 'Joined',
-            cell: (student) => (
-                <p className="text-sm text-muted-foreground">{formatDate(student.createdAt)}</p>
             ),
         },
         {
             header: 'Action',
             cell: (student) => (
-                <div className="text-right">
-                    <Link href={`/students/${student.id}`}>
-                        <Button
-                            variant="ghost"
-                            size="sm"
-                            className="text-muted-foreground hover:text-primary"
-                        >
-                            View <ArrowRight className="ml-1 h-4 w-4" />
-                        </Button>
+                <div className="text-right flex justify-end gap-3">
+                    <Link href={`/students/${student.id}`} className=''>
+                        <Eye className="w-5 h-5 mr-2" />
+                    </Link>
+                    <Link href={`/students/${student.id}`} className=''>
+                        <Edit className="w-5 h-5 mr-2" />
+                    </Link>
+                    <Link href={`/students/${student.id}`} className=''>
+                        <Trash className="w-5 h-5 mr-2 text-red-500" />
                     </Link>
                 </div>
             ),
@@ -85,9 +90,9 @@ export function RecentStudentsTable() {
                         <Button
                             variant="ghost"
                             size="default"
-                            className="text-primary hover:text-primary/80"
+                            className="text-primary hover:text-primary/80 bg-primary/10"
                         >
-                            View All <ArrowRight className="ml-1 h-4 w-4" />
+                            View All
                         </Button>
                     </Link>
                 </div>

@@ -1,17 +1,17 @@
 import { BookOpen, UserCheck, Users, UserX } from 'lucide-react';
 
 export const STAT_CARD_COLORS = {
-    blue: 'bg-blue-100 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400',
-    green: 'bg-green-100 dark:bg-green-900/20 text-green-600 dark:text-green-400',
-    purple: 'bg-purple-100 dark:bg-purple-900/20 text-purple-600 dark:text-purple-400',
-    orange: 'bg-orange-100 dark:bg-orange-900/20 text-orange-600 dark:text-orange-400',
+    blue: 'bg-blue-100/40 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400',
+    green: 'bg-green-100/40 dark:bg-green-900/20 text-green-600 dark:text-green-400',
+    purple: 'bg-purple-100/40 dark:bg-purple-900/20 text-purple-600 dark:text-purple-400',
+    orange: 'bg-orange-100/40 dark:bg-orange-900/20 text-orange-600 dark:text-orange-400',
 } as const;
 
 export const STAT_CARD_BORDERS = {
-    blue: 'border-b-blue-500',
-    green: 'border-b-green-500',
-    purple: 'border-b-purple-500',
-    orange: 'border-b-orange-500',
+    blue: 'border-b-blue-200',
+    green: 'border-b-green-200',
+    purple: 'border-b-purple-200',
+    orange: 'border-b-orange-200',
 } as const;
 
 export type StatColor = keyof typeof STAT_CARD_COLORS;

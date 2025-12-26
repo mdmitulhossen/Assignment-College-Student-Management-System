@@ -22,12 +22,12 @@ function GenderBar({ label, count, percentage, colorClass }: GenderBarProps) {
             <div className="flex items-center justify-between mb-2">
                 <span className="font-medium">{label}</span>
                 <span className="font-bold">
-                    {count} ({percentage}%)
+                    {count} <span className='text-primary font-normal'>({percentage}%)</span>
                 </span>
             </div>
             <div className="h-3 w-full bg-primary/10 dark:bg-gray-700 rounded-full overflow-hidden">
                 <div
-                    className={`h-full rounded-full transition-all ${colorClass}`}
+                    className={`h-full rounded-full transition-all bg-primary`}
                     style={{ width: `${percentage}%` }}
                 />
             </div>
@@ -41,7 +41,7 @@ export function GenderDistributionCard({ distribution, totalStudents }: GenderDi
             <CardContent className="pt-6">
                 <div className="flex items-center justify-between mb-6 flex-wrap">
                     <CardHeading title="Gender Distribution" />
-                    <span className="text-muted-foreground bg-gray-100 inline-block px-4 py-2 rounded-md">Total: {totalStudents}</span>
+                    <span className="text-gray-600 bg-gray-100 inline-block px-4 py-2 rounded-md">Total: {totalStudents}</span>
                 </div>
                 <div className="space-y-4">
                     <GenderBar

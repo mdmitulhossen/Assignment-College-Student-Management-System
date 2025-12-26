@@ -6,5 +6,5 @@ interface CardHeadingProps {
 }
 
 export function CardHeading({ title, className }: CardHeadingProps) {
-    return <h3 className={cn('text-2xl font-bold', className)}>{title}</h3>;
+    return <h3 className={cn('text-2xl font-semibold text-foreground', className)}>{title}</h3>;
 }

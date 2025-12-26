@@ -1,21 +1,27 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 
+export type HobbyType = 'Reading' | 'Travelling' | 'Movies' | 'Games';
+
 export interface Student {
     id: string;
     name: string;
-    email: string;
-    phone: string;
-    course: string;
+    age: number;
     gender: 'Male' | 'Female' | 'Other';
+    course: string;
+    hobby: HobbyType;
+    admissionDate: Date;
+    email?: string;
+    phone?: string;
     status: 'Active' | 'Deleted';
     createdAt: Date;
+    updatedAt: Date;
 }
 
 interface StudentStore {
     students: Student[];
-    addStudent: (student: Omit<Student, 'id' | 'createdAt'>) => void;
-    updateStudent: (id: string, student: Partial<Omit<Student, 'id' | 'createdAt'>>) => void;
+    addStudent: (student: Omit<Student, 'id' | 'status' | 'createdAt' | 'updatedAt'>) => void;
+    updateStudent: (id: string, student: Partial<Omit<Student, 'id' | 'createdAt' | 'updatedAt'>>) => void;
     deleteStudent: (id: string) => void;
     getStudentById: (id: string) => Student | undefined;
 }
@@ -31,14 +37,18 @@ export const useStudentStore = create<StudentStore>()(
                         {
                             ...student,
                             id: crypto.randomUUID(),
+                            status: 'Active' as const,
                             createdAt: new Date(),
+                            updatedAt: new Date(),
                         },
                     ],
                 })),
             updateStudent: (id, updatedData) =>
                 set((state) => ({
                     students: state.students.map((student) =>
-                        student.id === id ? { ...student, ...updatedData } : student
+                        student.id === id
+                            ? { ...student, ...updatedData, updatedAt: new Date() }
+                            : student
                     ),
                 })),
             deleteStudent: (id) =>
