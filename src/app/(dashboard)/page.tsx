@@ -3,6 +3,7 @@
 
 import { DashboardHeader } from '@/components/dashboard/DashboardHeader';
 import { GenderDistributionCard } from '@/components/dashboard/GenderDistributionCard';
+import { RecentStudentsTable } from '@/components/dashboard/RecentStudentsTable';
 import { StatCard } from '@/components/dashboard/StatCard';
 import { TopCoursesCard } from '@/components/dashboard/TopCoursesCard';
 import { useDashboardStats } from '@/hooks/useDashboardStats';
@@ -30,6 +31,9 @@ const DashboardPage = () => {
                 />
                 <TopCoursesCard courses={stats.topCourses} />
             </div>
+
+            {/* Recent Students Table */}
+            <RecentStudentsTable />
         </div>
     );
 };

@@ -1,4 +1,5 @@
 
+import { CardHeading } from '@/components/shared/CardHeading';
 import { type GenderDistribution } from '@/hooks/useDashboardStats';
 import { GENDER_COLORS } from '@/lib/dashboard.constants';
 import { Card, CardContent } from '../ui/card';
@@ -36,10 +37,10 @@ function GenderBar({ label, count, percentage, colorClass }: GenderBarProps) {
 
 export function GenderDistributionCard({ distribution, totalStudents }: GenderDistributionCardProps) {
     return (
-        <Card className="border-0 rounded-2xl transition-all hover:shadow-lg overflow-hidden group duration-150">
+        <Card className="card-box">
             <CardContent className="pt-6">
                 <div className="flex items-center justify-between mb-6 flex-wrap">
-                    <h3 className="text-2xl font-bold">Gender Distribution</h3>
+                    <CardHeading title="Gender Distribution" />
                     <span className="text-muted-foreground bg-gray-100 inline-block px-4 py-2 rounded-md">Total: {totalStudents}</span>
                 </div>
                 <div className="space-y-4">

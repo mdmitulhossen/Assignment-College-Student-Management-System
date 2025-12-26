@@ -1,3 +1,4 @@
+import { CardHeading } from '@/components/shared/CardHeading';
 import { Button } from '@/components/ui/button';
 import { type CourseData } from '@/hooks/useDashboardStats';
 import { ArrowRight } from 'lucide-react';
@@ -10,10 +11,10 @@ interface TopCoursesCardProps {
 
 export function TopCoursesCard({ courses }: TopCoursesCardProps) {
     return (
-        <Card className="transition-all hover:shadow-lg">
+        <Card className="card-box">
             <CardContent className="pt-6">
                 <div className="flex items-center justify-between mb-6">
-                    <h3 className="text-2xl font-bold">Top Courses</h3>
+                    <CardHeading title="Top Courses" />
                     <Link href="/students">
                         <Button variant="ghost" size="default" className="text-primary hover:text-primary/80">
                             View All <ArrowRight className="ml-1 h-4 w-4" />
@@ -29,7 +30,7 @@ export function TopCoursesCard({ courses }: TopCoursesCardProps) {
                         courses.map((course, index) => (
                             <div
                                 key={index}
-                                className="flex items-center gap-4 rounded-lg hover:bg-accent transition-colors cursor-pointer group"
+                                className="flex items-center gap-4 rounded-lg hover:bg-accent transition-colors cursor-pointer group sm:p-2 p-1"
                             >
                                 <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-linear-to-r from-(--gradient-start) to-(--gradient-end) text-white font-bold shrink-0 group-hover:scale-105 transition-transform">
                                     #{index + 1}
