@@ -52,7 +52,7 @@ export function useDashboardStats(): DashboardStats {
 
         const topCourses: CourseData[] = Object.entries(courseCounts)
             .sort(([, a], [, b]) => (b as number) - (a as number))
-            .slice(0, 5)
+            .slice(0, 3)
             .map(([course, count]) => ({ course, count: count as number }));
 
         return {

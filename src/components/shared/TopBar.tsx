@@ -58,7 +58,7 @@ const TopBar = ({ subtitle }: TopBarProps) => {
                 {subtitle && <p className="mt-2 text-sm lg:text-base font-medium text-foreground">{subtitle}</p>}
             </div>
 
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-3 md:gap-1">
                 {/* Theme Toggle */}
                 <button
                     onClick={toggleTheme}
