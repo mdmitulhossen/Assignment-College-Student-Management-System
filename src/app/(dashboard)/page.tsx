@@ -1,11 +1,33 @@
 
+'use client';
+
+import { DashboardHeader } from '@/components/dashboard/DashboardHeader';
+import { StatCard } from '@/components/dashboard/StatCard';
+import { useDashboardStats } from '@/hooks/useDashboardStats';
+import { DASHBOARD_STATS } from '@/lib/dashboard.constants';
+
 const DashboardPage = () => {
+    const stats = useDashboardStats();
+
     return (
-        <div className="py-10">
-            <p className="text-4xl font-semibold text-cyan-900">Coming Soon ....</p>
-            {/* <ButtonExamples /> */}
-            <div className="h-screen bg-red-500"></div>
-            <div className="h-screen bg-blue-500"></div>
+        <div className="space-y-6">
+            <DashboardHeader />
+
+            {/* Statistics Cards */}
+            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+                {DASHBOARD_STATS.map((config) => (
+                    <StatCard key={config.key} config={config} value={stats[config.key]} />
+                ))}
+            </div>
+
+            {/* Charts Section */}
+            {/* <div className="grid gap-6 md:grid-cols-2">
+                <GenderDistributionCard
+                    distribution={stats.genderDistribution}
+                    totalStudents={stats.totalStudents}
+                />
+                <TopCoursesCard courses={stats.topCourses} />
+            </div> */}
         </div>
     );
 };
