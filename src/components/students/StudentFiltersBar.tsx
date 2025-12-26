@@ -51,7 +51,7 @@ export function StudentFiltersBar({
     return (
         <div className="space-y-4">
             {/* First Row: Search, View Toggle, Reset */}
-            <div className="flex flex-col sm:flex-row gap-3 items-start sm:items-center justify-between">
+            <div className="flex gap-3 items-start sm:items-center justify-between">
                 <div className="flex-1 w-full sm:w-auto">
                     <SearchBar
                         value={filters.search}
