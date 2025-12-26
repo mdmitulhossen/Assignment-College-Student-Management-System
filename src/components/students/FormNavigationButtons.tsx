@@ -7,6 +7,8 @@ interface FormNavigationButtonsProps {
     isSubmitting: boolean;
     onPrevious: () => void;
     onNext: () => void;
+    onSubmit: () => void;
+    submitText?: string;
 }
 
 export function FormNavigationButtons({
@@ -15,6 +17,8 @@ export function FormNavigationButtons({
     isSubmitting,
     onPrevious,
     onNext,
+    onSubmit,
+    submitText = 'Submit',
 }: FormNavigationButtonsProps) {
     const isFirstStep = currentStep === 1;
     const isLastStep = currentStep === totalSteps;
@@ -26,28 +30,38 @@ export function FormNavigationButtons({
                 variant="outline"
                 onClick={onPrevious}
                 disabled={isFirstStep || isSubmitting}
-                className='cursor-pointer'
+                className="cursor-pointer"
             >
                 <ArrowLeft className="w-4 h-4 mr-2" />
                 Previous
             </Button>
 
             {isLastStep ? (
-                <Button type="submit" disabled={isSubmitting} className='cursor-pointer'>
+                <Button
+                    type="button"
+                    onClick={onSubmit}
+                    disabled={isSubmitting}
+                    className="cursor-pointer"
+                >
                     {isSubmitting ? (
                         <>
                             <Loader2 className="w-4 h-4 mr-2 animate-spin" />
-                            Submitting...
+                            {submitText === 'Update Student' ? 'Updating...' : 'Submitting...'}
                         </>
                     ) : (
                         <>
                             <Check className="w-4 h-4 mr-2" />
-                            Submit
+                            {submitText}
                         </>
                     )}
                 </Button>
             ) : (
-                <Button type="button" onClick={onNext} disabled={isSubmitting} className='cursor-pointer'>
+                <Button
+                    type="button"
+                    onClick={onNext}
+                    disabled={isSubmitting}
+                    className="cursor-pointer"
+                >
                     Next
                     <ArrowRight className="w-4 h-4 ml-2" />
                 </Button>

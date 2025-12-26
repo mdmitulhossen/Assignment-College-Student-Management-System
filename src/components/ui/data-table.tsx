@@ -98,7 +98,7 @@ export function DataTable<T>({
 
     return (
         <div className={className}>
-            <div className="">
+            <div>
                 <Table>
                     <TableHeader>
                         <TableRow>

@@ -23,6 +23,7 @@ interface StudentStore {
     addStudent: (student: Omit<Student, 'id' | 'status' | 'createdAt' | 'updatedAt'>) => void;
     updateStudent: (id: string, student: Partial<Omit<Student, 'id' | 'createdAt' | 'updatedAt'>>) => void;
     deleteStudent: (id: string) => void;
+    restoreStudent: (id: string) => void;
     getStudentById: (id: string) => Student | undefined;
 }
 
@@ -55,6 +56,14 @@ export const useStudentStore = create<StudentStore>()(
                 set((state) => ({
                     students: state.students.map((student) =>
                         student.id === id ? { ...student, status: 'Deleted' as const } : student
+                    ),
+                })),
+            restoreStudent: (id) =>
+                set((state) => ({
+                    students: state.students.map((student) =>
+                        student.id === id
+                            ? { ...student, status: 'Active' as const, updatedAt: new Date() }
+                            : student
                     ),
                 })),
             getStudentById: (id) => get().students.find((student) => student.id === id),
