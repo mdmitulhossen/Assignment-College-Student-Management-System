@@ -2,7 +2,7 @@
 'use client';
 
 import { useSidebarStore } from "@/store/sidebar-store";
-import { getCurrentDate, getGreeting } from "@/utils/greeting.helper";
+import { getCurrentDate, getGreeting } from "@/utils/greeting.utils";
 import { Menu, PanelLeftClose, X } from "lucide-react";
 
 interface TopBarProps {
