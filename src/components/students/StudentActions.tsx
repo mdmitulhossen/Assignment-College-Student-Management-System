@@ -1,6 +1,6 @@
 import { Button } from '@/components/ui/button';
 import { Student } from '@/store/student-store';
-import { Eye, Pencil, Trash2 } from 'lucide-react';
+import { Edit, Eye, Trash } from 'lucide-react';
 
 interface StudentActionsProps {
     student: Student;
@@ -15,35 +15,41 @@ export function StudentActions({
     onEdit,
     onDelete,
 }: StudentActionsProps) {
+    const isDeleted = student.status === 'Deleted';
+
     return (
         <div className="flex items-center justify-end gap-2">
             <Button
                 variant="ghost"
-                size="sm"
+                size="default"
                 onClick={() => onView(student)}
                 className="h-8 w-8 p-0"
                 title="View"
             >
-                <Eye className="h-4 w-4" />
+                <Eye className="w-5! h-5!" />
             </Button>
-            <Button
-                variant="ghost"
-                size="sm"
-                onClick={() => onEdit(student)}
-                className="h-8 w-8 p-0"
-                title="Edit"
-            >
-                <Pencil className="h-4 w-4" />
-            </Button>
-            <Button
-                variant="ghost"
-                size="sm"
-                onClick={() => onDelete(student)}
-                className="h-8 w-8 p-0 text-destructive hover:text-destructive"
-                title="Delete"
-            >
-                <Trash2 className="h-4 w-4" />
-            </Button>
+            {!isDeleted && (
+                <>
+                    <Button
+                        variant="ghost"
+                        size="default"
+                        onClick={() => onEdit(student)}
+                        className="h-8 w-8 p-0"
+                        title="Edit"
+                    >
+                        <Edit className="h-5! w-5!" />
+                    </Button>
+                    <Button
+                        variant="ghost"
+                        size="default"
+                        onClick={() => onDelete(student)}
+                        className="h-8 w-8 p-0 text-destructive hover:text-destructive"
+                        title="Delete"
+                    >
+                        <Trash className="h-5! w-5! text-red-500" />
+                    </Button>
+                </>
+            )}
         </div>
     );
 }

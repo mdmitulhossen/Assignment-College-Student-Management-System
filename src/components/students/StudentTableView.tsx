@@ -28,21 +28,21 @@ export function StudentTableView({
             accessor: 'course',
         },
         {
-            header: 'Age',
-            accessor: 'age',
-            className: 'text-center',
+            header: 'Joined',
+            cell: (student) => formatDate(student.admissionDate),
         },
         {
             header: 'Gender',
             accessor: 'gender',
         },
         {
-            header: 'Hobby',
-            accessor: 'hobby',
+            header: 'Age',
+            accessor: 'age',
+            className: 'text-center',
         },
         {
-            header: 'Admission Date',
-            cell: (student) => formatDate(student.admissionDate),
+            header: 'Hobby',
+            accessor: 'hobby',
         },
         {
             header: 'Status',

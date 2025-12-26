@@ -3,92 +3,44 @@
 import { ConfirmationModal } from '@/components/modal/ConfirmationModal';
 import { StudentViewModal } from '@/components/modal/StudentViewModal';
 import { PageHeader } from '@/components/shared/PageHeader';
+import { useStudentActions } from '@/hooks/useStudentActions';
+import { useStudentFilters } from '@/hooks/useStudentFilters';
 import { COURSE_OPTIONS, GENDER_OPTIONS } from '@/lib/constants/form.constants';
-import {
-    INITIAL_FILTERS,
-    INITIAL_SORT,
-    StudentFilters,
-    StudentSort,
-    ViewMode,
-} from '@/lib/types/student-list.types';
-import { filterStudents, sortStudents } from '@/lib/utils/student-list.utils';
-import { Student, useStudentStore } from '@/store/student-store';
-import { useRouter } from 'next/navigation';
-import { useMemo, useState } from 'react';
-import { toast } from 'sonner';
+import { ViewMode } from '@/lib/types/student-list.types';
+import { useStudentStore } from '@/store/student-store';
+import { useState } from 'react';
 import { StudentCardView } from './StudentCardView';
 import { StudentFiltersBar } from './StudentFiltersBar';
 import { StudentTableView } from './StudentTableView';
 
 export function StudentList() {
-    const router = useRouter();
-    const { students, deleteStudent, restoreStudent } = useStudentStore();
+    const { students } = useStudentStore();
     const [viewMode, setViewMode] = useState<ViewMode>('table');
-    const [filters, setFilters] = useState<StudentFilters>(INITIAL_FILTERS);
-    const [sort, setSort] = useState<StudentSort>(INITIAL_SORT);
 
-    // Modal states
-    const [viewModalOpen, setViewModalOpen] = useState(false);
-    const [deleteModalOpen, setDeleteModalOpen] = useState(false);
-    const [selectedStudent, setSelectedStudent] = useState<Student | null>(null);
+    const {
+        viewModalOpen,
+        deleteModalOpen,
+        selectedStudent,
+        handleView,
+        handleEdit,
+        handleDelete,
+        handleRestore,
+        confirmDelete,
+        closeViewModal,
+        closeDeleteModal,
+    } = useStudentActions();
 
-    // const activeStudents = students.filter((s) => s.status === 'Active');
-
-    const processedStudents = useMemo(() => {
-        let result = filterStudents(students, filters);
-        result = sortStudents(result, sort);
-        return result;
-    }, [students, filters, sort]);
-
-    const handleFilterChange = (key: keyof StudentFilters, value: string) => {
-        setFilters((prev) => ({ ...prev, [key]: value }));
-    };
-
-    const handleSortFieldChange = (field: StudentSort['field']) => {
-        setSort((prev) => ({ ...prev, field }));
-    };
-
-    const handleSortOrderChange = (order: StudentSort['order']) => {
-        setSort((prev) => ({ ...prev, order }));
-    };
-
-    const handleResetFilters = () => {
-        setFilters(INITIAL_FILTERS);
-        setSort(INITIAL_SORT);
-    };
-
-    const handleView = (student: Student) => {
-        setSelectedStudent(student);
-        setViewModalOpen(true);
-    };
-
-    const handleEdit = (student: Student) => {
-        router.push(`/students/${student.id}/edit`);
-    };
-
-    const handleDelete = (student: Student) => {
-        setSelectedStudent(student);
-        setDeleteModalOpen(true);
-    };
-
-    const confirmDelete = () => {
-        if (selectedStudent) {
-            deleteStudent(selectedStudent.id);
-            toast.success(`${selectedStudent.name} has been deleted successfully`, {
-                description: 'The student record has been moved to deleted status',
-            });
-            setSelectedStudent(null);
-        }
-    };
-
-    const handleRestore = (student: Student) => {
-        restoreStudent(student.id);
-        toast.success(`${student.name} has been restored successfully`, {
-            description: 'The student is now active again',
-        });
-        setViewModalOpen(false);
-        setSelectedStudent(null);
-    };
+    const {
+        processedStudents,
+        filters,
+        sort,
+        handleFilterChange,
+        handleSortFieldChange,
+        handleSortOrderChange,
+        handleResetFilters,
+        totalCount,
+        filteredCount,
+    } = useStudentFilters({ students, debounceDelay: 300 });
 
     const genderOptions = [
         { value: 'all', label: 'All Genders' },
@@ -122,8 +74,8 @@ export function StudentList() {
                 filters={filters}
                 sort={sort}
                 viewMode={viewMode}
-                totalStudents={students.length}
-                filteredCount={processedStudents.length}
+                totalStudents={totalCount}
+                filteredCount={filteredCount}
                 genderOptions={genderOptions}
                 courseOptions={courseOptions}
                 statusOptions={statusOptions}
@@ -157,10 +109,7 @@ export function StudentList() {
             {/* View Modal */}
             <StudentViewModal
                 isOpen={viewModalOpen}
-                onClose={() => {
-                    setViewModalOpen(false);
-                    setSelectedStudent(null);
-                }}
+                onClose={closeViewModal}
                 student={selectedStudent}
                 onEdit={handleEdit}
                 onDelete={handleDelete}
@@ -170,10 +119,7 @@ export function StudentList() {
             {/* Delete Confirmation Modal */}
             <ConfirmationModal
                 isOpen={deleteModalOpen}
-                onClose={() => {
-                    setDeleteModalOpen(false);
-                    setSelectedStudent(null);
-                }}
+                onClose={closeDeleteModal}
                 onConfirm={confirmDelete}
                 title="Delete Student"
                 description={`Are you sure you want to delete ${selectedStudent?.name}? This will change the student's status to deleted.`}
