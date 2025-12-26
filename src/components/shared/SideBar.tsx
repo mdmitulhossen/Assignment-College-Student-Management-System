@@ -44,7 +44,7 @@ const SideBar = () => {
 
             {/* Sidebar */}
             <aside className={cn(
-                "fixed left-0 top-0 z-50 h-screen border-r bg-background transition-all duration-300",
+                "fixed left-0 top-0 z-50 h-screen border-r bg-card transition-all duration-300",
                 "w-68",
                 "lg:translate-x-0",
                 isMobileOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0",
@@ -116,7 +116,7 @@ const SideBar = () => {
                     <div className="border-t p-4 flex flex-col items-center">
                         {isExpanded ? (
                             <>
-                                <div className="flex items-center gap-3 bg-gray-50 shadow rounded-lg px-5 py-2 w-full">
+                                <div className="flex items-center gap-3 bg-gray-100 dark:bg-gray-800 shadow rounded-lg px-5 py-2 w-full">
                                     <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-primary/90 text-white font-semibold">
                                         A
                                     </div>
@@ -132,7 +132,7 @@ const SideBar = () => {
                                 <div className="lg:flex hidden h-12 w-12 items-center justify-center rounded-full bg-primary/90 text-white font-semibold">
                                     A
                                 </div>
-                                <div className="lg:hidden flex items-center gap-3 bg-gray-50 shadow rounded-lg px-5 py-2 w-full">
+                                <div className="lg:hidden flex items-center gap-3 bg-gray-100 dark:bg-gray-800 shadow rounded-lg px-5 py-2 w-full">
                                     <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-primary/90 text-white font-semibold">
                                         A
                                     </div>

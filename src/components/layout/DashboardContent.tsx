@@ -26,7 +26,7 @@ const DashboardContent = ({ children, title = "Dashboard", subtitle, action }: D
                 isExpanded ? "2xl:ml-78" : "2xl:ml-20"
             )}>
                 <TopBar title={title} subtitle={subtitle} action={action} />
-                <main className="2xl:p-8 p-4">
+                <main className="2xl:p-8 p-4 dark:bg-background">
                     {children}
                 </main>
             </div>
