@@ -143,7 +143,7 @@ export function DataTable<T>({
             {/* Pagination */}
             {totalPages > 1 && (
                 <div className="flex items-center justify-between px-2 py-4">
-                    <div className="text-sm text-muted-foreground">
+                    <div className="text-sm text-muted-foreground hidden md:block">
                         Showing {startIndex + 1} to {Math.min(endIndex, data.length)} of {data.length} entries
                     </div>
                     <div className="flex items-center space-x-2">

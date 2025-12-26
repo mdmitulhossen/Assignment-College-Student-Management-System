@@ -11,15 +11,12 @@ import {
 } from '@/lib/types/student-list.types';
 import { filterStudents, sortStudents } from '@/lib/utils/student-list.utils';
 import { Student, useStudentStore } from '@/store/student-store';
-import { Plus, X } from 'lucide-react';
+import { Plus } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { useMemo, useState } from 'react';
-import { FilterDropdown } from './FilterDropdown';
-import { SearchBar } from './SearchBar';
-import { SortSelect } from './SortSelect';
 import { StudentCardView } from './StudentCardView';
+import { StudentFiltersBar } from './StudentFiltersBar';
 import { StudentTableView } from './StudentTableView';
-import { ViewToggle } from './ViewToggle';
 
 export function StudentList() {
     const router = useRouter();
@@ -67,9 +64,6 @@ export function StudentList() {
         }
     };
 
-    const hasActiveFilters =
-        filters.search || filters.gender !== 'all' || filters.course !== 'all' || filters.status !== 'all';
-
     const genderOptions = [
         { value: 'all', label: 'All Genders' },
         ...GENDER_OPTIONS.map((g) => ({ value: g.value, label: g.label })),
@@ -101,60 +95,21 @@ export function StudentList() {
                 </Button>
             </div>
 
-            <div className="p-4 lg:p-6 space-y-4">
-                <div className="flex flex-col lg:flex-row gap-4">
-                    <SearchBar
-                        value={filters.search}
-                        onChange={(value) => handleFilterChange('search', value)}
-                        placeholder="Search by name or course..."
-                    />
-
-                    <div className="flex flex-col sm:flex-row gap-4 flex-wrap lg:flex-nowrap">
-                        <FilterDropdown
-                            value={filters.gender}
-                            options={genderOptions}
-                            onChange={(value) => handleFilterChange('gender', value)}
-                        />
-
-                        <FilterDropdown
-                            value={filters.course}
-                            options={courseOptions}
-                            onChange={(value) => handleFilterChange('course', value)}
-                        />
-
-                        <FilterDropdown
-                            value={filters.status}
-                            options={statusOptions}
-                            onChange={(value) => handleFilterChange('status', value)}
-                        />
-
-                        <SortSelect
-                            field={sort.field}
-                            order={sort.order}
-                            onFieldChange={handleSortFieldChange}
-                            onOrderChange={handleSortOrderChange}
-                        />
-
-                        <ViewToggle view={viewMode} onChange={setViewMode} />
-
-                        {hasActiveFilters && (
-                            <Button
-                                variant="outline"
-                                size="sm"
-                                onClick={handleResetFilters}
-                                className="whitespace-nowrap"
-                            >
-                                <X className="h-4 w-4 mr-2" />
-                                Reset
-                            </Button>
-                        )}
-                    </div>
-                </div>
-
-                <div className="text-sm text-muted-foreground">
-                    Showing {processedStudents.length} of {activeStudents.length} students
-                </div>
-            </div>
+            <StudentFiltersBar
+                filters={filters}
+                sort={sort}
+                viewMode={viewMode}
+                totalStudents={activeStudents.length}
+                filteredCount={processedStudents.length}
+                genderOptions={genderOptions}
+                courseOptions={courseOptions}
+                statusOptions={statusOptions}
+                onFilterChange={handleFilterChange}
+                onSortFieldChange={handleSortFieldChange}
+                onSortOrderChange={handleSortOrderChange}
+                onViewModeChange={setViewMode}
+                onResetFilters={handleResetFilters}
+            />
 
             <div className="card-box bg-card">
                 {viewMode === 'table' ? (
