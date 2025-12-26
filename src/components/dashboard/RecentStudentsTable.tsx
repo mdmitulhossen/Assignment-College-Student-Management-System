@@ -4,61 +4,15 @@ import { CardHeading } from '@/components/shared/CardHeading';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { DataTable, type Column } from '@/components/ui/data-table';
-import { useStudentStore, type Student } from '@/store/student-store';
+import { useRecentStudents } from '@/hooks/useRecentStudents';
+import { getAvatarColor, getHobbyFromEmail } from '@/lib/dashboard.constants';
+import { type Student } from '@/store/student-store';
+import { calculateAge, formatDate, getInitials } from '@/utils/format.utils';
 import { ArrowRight } from 'lucide-react';
 import Link from 'next/link';
-import { useMemo } from 'react';
 
 export function RecentStudentsTable() {
-    const { students } = useStudentStore();
-
-    const recentStudents = useMemo(() => {
-        return students
-            .filter((s) => s.status === 'Active')
-            .sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime())
-            .slice(0, 5);
-    }, [students]);
-
-    const getInitials = (name: string) => {
-        return name
-            .split(' ')
-            .map((n) => n[0])
-            .join('')
-            .toUpperCase()
-            .slice(0, 2);
-    };
-
-    const formatDate = (date: Date) => {
-        return new Intl.DateTimeFormat('en-US', {
-            month: 'short',
-            day: 'numeric',
-            year: 'numeric',
-        }).format(new Date(date));
-    };
-
-    const getAvatarColor = (index: number) => {
-        const colors = [
-            'bg-teal-500',
-            'bg-blue-500',
-            'bg-purple-500',
-            'bg-pink-500',
-            'bg-orange-500',
-        ];
-        return colors[index % colors.length];
-    };
-
-    const getHobby = (email: string) => {
-        if (email.includes('john')) return 'Travelling';
-        if (email.includes('jane')) return 'Reading';
-        if (email.includes('alex')) return 'Gaming';
-        if (email.includes('emily')) return 'Painting';
-        if (email.includes('michael')) return 'Sports';
-        if (email.includes('sarah')) return 'Music';
-        if (email.includes('david')) return 'Coding';
-        if (email.includes('lisa')) return 'Dancing';
-        if (email.includes('james')) return 'Photography';
-        return 'Movies';
-    };
+    const recentStudents = useRecentStudents(5);
 
     const columns: Column<Student>[] = [
         {
@@ -87,17 +41,13 @@ export function RecentStudentsTable() {
         },
         {
             header: 'Age',
-            cell: (student) => (
-                <p className="text-sm">
-                    {new Date().getFullYear() - new Date(student.createdAt).getFullYear() + 18}
-                </p>
-            ),
+            cell: (student) => <p className="text-sm">{calculateAge(student.createdAt)}</p>,
         },
         {
             header: 'Hobby',
             cell: (student) => (
                 <span className="inline-block px-3 py-1 bg-purple-100 text-purple-600 dark:bg-purple-900/30 dark:text-purple-400 rounded-full text-sm font-medium">
-                    {getHobby(student.email)}
+                    {getHobbyFromEmail(student.email)}
                 </span>
             ),
         },

@@ -65,3 +65,44 @@ export const GENDER_COLORS = {
     female: 'bg-pink-500',
     other: 'bg-purple-500',
 } as const;
+
+// Avatar colors for student profiles
+export const AVATAR_COLORS = [
+    'bg-teal-500',
+    'bg-blue-500',
+    'bg-purple-500',
+    'bg-pink-500',
+    'bg-orange-500',
+] as const;
+
+/**
+ * Get avatar color by index
+ * @param index - Index to determine color
+ * @returns Tailwind background color class
+ */
+export function getAvatarColor(index: number): string {
+    return AVATAR_COLORS[index % AVATAR_COLORS.length];
+}
+
+// Hobby mappings based on email patterns
+export const HOBBY_MAP: Record<string, string> = {
+    john: 'Travelling',
+    jane: 'Reading',
+    alex: 'Gaming',
+    emily: 'Painting',
+    michael: 'Sports',
+    sarah: 'Music',
+    david: 'Coding',
+    lisa: 'Dancing',
+    james: 'Photography',
+} as const;
+
+/**
+ * Get hobby based on email
+ * @param email - Email to check
+ * @returns Hobby name
+ */
+export function getHobbyFromEmail(email: string): string {
+    const entry = Object.entries(HOBBY_MAP).find(([key]) => email.includes(key));
+    return entry ? entry[1] : 'Movies';
+}
