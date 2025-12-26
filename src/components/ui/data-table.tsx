@@ -1,5 +1,6 @@
 'use client';
 
+import { EmptyState } from '@/components/shared/EmptyState';
 import { Button } from '@/components/ui/button';
 import {
     Table,
@@ -24,9 +25,22 @@ interface DataTableProps<T> {
     columns: Column<T>[];
     pageSize?: number;
     className?: string;
+    emptyStateTitle?: string;
+    emptyStateDescription?: string;
+    emptyStateAction?: string;
+    emptyStateHref?: string;
 }
 
-export function DataTable<T>({ data, columns, pageSize = 10, className }: DataTableProps<T>) {
+export function DataTable<T>({
+    data,
+    columns,
+    pageSize = 10,
+    className,
+    emptyStateTitle,
+    emptyStateDescription,
+    emptyStateAction,
+    emptyStateHref,
+}: DataTableProps<T>) {
     const [currentPage, setCurrentPage] = useState(1);
 
     const totalPages = Math.ceil(data.length / pageSize);
@@ -84,7 +98,7 @@ export function DataTable<T>({ data, columns, pageSize = 10, className }: DataTa
 
     return (
         <div className={className}>
-            <div className="rounded-lg border bg-card">
+            <div className="">
                 <Table>
                     <TableHeader>
                         <TableRow>
@@ -98,11 +112,13 @@ export function DataTable<T>({ data, columns, pageSize = 10, className }: DataTa
                     <TableBody>
                         {currentData.length === 0 ? (
                             <TableRow>
-                                <TableCell
-                                    colSpan={columns.length}
-                                    className="h-24 text-center text-muted-foreground"
-                                >
-                                    No data available
+                                <TableCell colSpan={columns.length} className="p-0">
+                                    <EmptyState
+                                        title={emptyStateTitle}
+                                        description={emptyStateDescription}
+                                        actionLabel={emptyStateAction}
+                                        actionHref={emptyStateHref}
+                                    />
                                 </TableCell>
                             </TableRow>
                         ) : (
