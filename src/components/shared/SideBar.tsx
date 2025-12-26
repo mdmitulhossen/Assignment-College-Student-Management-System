@@ -3,7 +3,7 @@
 
 import { cn } from '@/lib/utils';
 import { useSidebarStore } from '@/store/sidebar-store';
-import { GraduationCap, LayoutDashboard, UserPlus, Users, X } from 'lucide-react';
+import { GraduationCap, LayoutDashboard, Users, X } from 'lucide-react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
@@ -23,12 +23,6 @@ const SideBar = () => {
             icon: Users,
             href: '/students',
             active: pathname.startsWith('/students') && pathname !== '/students/new',
-        },
-        {
-            label: 'Add Student',
-            icon: UserPlus,
-            href: '/students/new',
-            active: pathname === '/students/new',
         },
     ];
 
