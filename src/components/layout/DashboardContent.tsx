@@ -22,8 +22,7 @@ const DashboardContent = ({ children, title = "Dashboard", subtitle, action }: D
             <div className={cn(
                 "transition-all duration-300",
                 "ml-0",
-                isExpanded ? "lg:ml-68" : "lg:ml-20",
-                isExpanded ? "2xl:ml-78" : "2xl:ml-20"
+                isExpanded ? "lg:ml-68 max-[100rem]:w-78:ml-78" : "lg:ml-20"
             )}>
                 <TopBar title={title} subtitle={subtitle} action={action} />
                 <main className="2xl:p-8 p-4 dark:bg-background">

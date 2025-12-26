@@ -48,8 +48,7 @@ const SideBar = () => {
                 "w-68",
                 "lg:translate-x-0",
                 isMobileOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0",
-                isExpanded ? "lg:w-68" : "lg:w-20",
-                isExpanded ? "2xl:w-78" : "2xl:w-20"
+                isExpanded ? "lg:w-68 max-[100rem]:w-78" : "lg:w-20",
             )}>
                 <div className="flex h-full flex-col">
                     {isMobileOpen && (
