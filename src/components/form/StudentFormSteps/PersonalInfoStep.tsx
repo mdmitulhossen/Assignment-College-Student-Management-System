@@ -5,7 +5,6 @@ import { HOBBY_OPTIONS } from '@/lib/constants/form.constants';
 import { StudentFormData } from '@/lib/schemas/student.schema';
 import { CheckCircle2, Heart } from 'lucide-react';
 import { FieldErrors, UseFormRegister } from 'react-hook-form';
-import { FormField } from '../FormField';
 
 interface PersonalInfoStepProps {
     register: UseFormRegister<StudentFormData>;
@@ -20,8 +19,8 @@ export function PersonalInfoStep({ register, errors }: PersonalInfoStepProps) {
                     <Heart className="w-5 h-5 text-pink-600" />
                 </div>
                 <div>
-                    <h3 className="text-lg font-semibold text-foreground">Personal Information</h3>
-                    <p className="text-sm text-muted-foreground">
+                    <h3 className="text-lg xl:text-xl font-semibold text-foreground">Personal Information</h3>
+                    <p className="text-sm xl:text-base text-muted-foreground">
                         Additional details about the student
                     </p>
                 </div>
@@ -37,28 +36,6 @@ export function PersonalInfoStep({ register, errors }: PersonalInfoStepProps) {
                 helperText="Choose the student&apos;s primary interest"
                 required
             />
-
-            <div className="grid gap-6 md:grid-cols-2">
-                <FormField
-                    label="Email Address"
-                    name="email"
-                    type="email"
-                    register={register}
-                    error={errors.email}
-                    placeholder="e.g., john@example.com"
-                    helperText="Optional - for communication"
-                />
-
-                <FormField
-                    label="Phone Number"
-                    name="phone"
-                    type="tel"
-                    register={register}
-                    error={errors.phone}
-                    placeholder="e.g., +1234567890"
-                    helperText="Optional - for contact"
-                />
-            </div>
 
             <div className="flex items-start gap-3 p-4 bg-green-50 border border-green-200 rounded-lg">
                 <CheckCircle2 className="w-5 h-5 text-green-600 shrink-0 mt-0.5" />

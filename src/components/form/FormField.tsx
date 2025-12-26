@@ -36,7 +36,7 @@ export function FormField<T extends FieldValues>({
 
     return (
         <div className="space-y-2">
-            <label htmlFor={name} className="text-sm font-medium text-foreground">
+            <label htmlFor={name} className="font-medium text-foreground">
                 {label} {required && <span className="text-destructive">*</span>}
             </label>
             <input
@@ -47,7 +47,7 @@ export function FormField<T extends FieldValues>({
                 min={min}
                 max={max}
                 className={cn(
-                    'w-full px-3 py-2 border rounded-md text-sm',
+                    'w-full px-3 py-2 border rounded-md',
                     'focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent',
                     'transition-colors duration-200',
                     error

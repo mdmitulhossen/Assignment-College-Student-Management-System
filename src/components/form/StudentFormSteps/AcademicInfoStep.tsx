@@ -1,9 +1,10 @@
 'use client';
 
+import { FormField } from '@/components/form/FormField';
 import { FormSelect } from '@/components/form/FormSelect';
 import { COURSE_OPTIONS } from '@/lib/constants/form.constants';
 import { StudentFormData } from '@/lib/schemas/student.schema';
-import { GraduationCap, Info } from 'lucide-react';
+import { GraduationCap } from 'lucide-react';
 import { FieldErrors, UseFormRegister } from 'react-hook-form';
 
 interface AcademicInfoStepProps {
@@ -12,6 +13,8 @@ interface AcademicInfoStepProps {
 }
 
 export function AcademicInfoStep({ register, errors }: AcademicInfoStepProps) {
+    const today = new Date().toISOString().split('T')[0];
+
     return (
         <div className="space-y-6">
             <div className="flex items-center gap-3 pb-4 border-b">
@@ -19,33 +22,35 @@ export function AcademicInfoStep({ register, errors }: AcademicInfoStepProps) {
                     <GraduationCap className="w-5 h-5 text-purple-600" />
                 </div>
                 <div>
-                    <h3 className="text-lg font-semibold text-foreground">Academic Information</h3>
-                    <p className="text-sm text-muted-foreground">
+                    <h3 className="text-lg xl:text-xl font-semibold text-foreground">Academic Information</h3>
+                    <p className="text-sm xl:text-base text-muted-foreground">
                         Select the course for the student
                     </p>
                 </div>
             </div>
 
-            <FormSelect
-                label="Course"
-                name="course"
-                register={register}
-                error={errors.course}
-                options={COURSE_OPTIONS}
-                placeholder="Select a course"
-                helperText="Choose the primary course of study"
-                required
-            />
+            <div className="grid gap-6 md:grid-cols-2">
+                <FormSelect
+                    label="Course"
+                    name="course"
+                    register={register}
+                    error={errors.course}
+                    options={COURSE_OPTIONS}
+                    placeholder="Select a course"
+                    helperText="Choose the primary course of study"
+                    required
+                />
 
-            <div className="flex items-start gap-3 p-4 bg-blue-50 border border-blue-200 rounded-lg">
-                <Info className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
-                <div>
-                    <p className="text-sm font-medium text-blue-900">Course Assignment</p>
-                    <p className="text-xs text-blue-700 mt-1">
-                        The selected course will be assigned to the student. You can change this
-                        later from the student profile.
-                    </p>
-                </div>
+                <FormField
+                    label="Admission Date"
+                    name="admissionDate"
+                    type="date"
+                    register={register}
+                    error={errors.admissionDate}
+                    max={today}
+                    helperText="Cannot be a future date"
+                    required
+                />
             </div>
         </div>
     );

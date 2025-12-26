@@ -41,23 +41,21 @@ export function StudentForm() {
 
             <StepIndicator steps={FORM_STEPS} currentStep={currentStep} className="mb-8" />
 
-            <div className="card-box bg-card">
-                <form onSubmit={handleSubmit(submitStudent)} className="p-6 md:p-8">
-                    <StepContent
-                        currentStep={currentStep}
-                        register={register}
-                        errors={errors}
-                    />
+            <form onSubmit={handleSubmit(submitStudent)}>
+                <StepContent
+                    currentStep={currentStep}
+                    register={register}
+                    errors={errors}
+                />
 
-                    <FormNavigationButtons
-                        currentStep={currentStep}
-                        totalSteps={FORM_STEPS.length}
-                        isSubmitting={isSubmitting}
-                        onPrevious={goToPreviousStep}
-                        onNext={goToNextStep}
-                    />
-                </form>
-            </div>
+                <FormNavigationButtons
+                    currentStep={currentStep}
+                    totalSteps={FORM_STEPS.length}
+                    isSubmitting={isSubmitting}
+                    onPrevious={goToPreviousStep}
+                    onNext={goToNextStep}
+                />
+            </form>
         </div>
     );
 }

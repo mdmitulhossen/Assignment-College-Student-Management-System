@@ -13,8 +13,6 @@ interface BasicInfoStepProps {
 }
 
 export function BasicInfoStep({ register, errors }: BasicInfoStepProps) {
-    const today = new Date().toISOString().split('T')[0];
-
     return (
         <div className="space-y-6">
             <div className="flex items-center gap-3 pb-4 border-b">
@@ -22,23 +20,25 @@ export function BasicInfoStep({ register, errors }: BasicInfoStepProps) {
                     <User className="w-5 h-5 text-blue-600" />
                 </div>
                 <div>
-                    <h3 className="text-lg font-semibold text-foreground">Basic Information</h3>
-                    <p className="text-sm text-muted-foreground">
+                    <h3 className="text-lg xl:text-xl font-semibold text-foreground">Basic Information</h3>
+                    <p className="text-sm xl:text-base text-muted-foreground">
                         Enter the student&apos;s personal details
                     </p>
                 </div>
             </div>
 
             <div className="grid gap-6 md:grid-cols-2">
-                <FormField
-                    label="Full Name"
-                    name="name"
-                    register={register}
-                    error={errors.name}
-                    placeholder="e.g., John Doe"
-                    helperText="Minimum 3 characters required"
-                    required
-                />
+                <div className='md:col-span-2'>
+                    <FormField
+                        label="Full Name"
+                        name="name"
+                        register={register}
+                        error={errors.name}
+                        placeholder="e.g., John Doe"
+                        helperText="Minimum 3 characters required"
+                        required
+                    />
+                </div>
 
                 <FormField
                     label="Age"
@@ -60,17 +60,6 @@ export function BasicInfoStep({ register, errors }: BasicInfoStepProps) {
                     error={errors.gender}
                     options={GENDER_OPTIONS}
                     placeholder="Select gender"
-                    required
-                />
-
-                <FormField
-                    label="Admission Date"
-                    name="admissionDate"
-                    type="date"
-                    register={register}
-                    error={errors.admissionDate}
-                    max={today}
-                    helperText="Cannot be a future date"
                     required
                 />
             </div>

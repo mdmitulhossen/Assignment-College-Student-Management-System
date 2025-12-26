@@ -3,9 +3,9 @@ import { useState } from 'react';
 import { UseFormTrigger } from 'react-hook-form';
 
 const STEP_VALIDATION_FIELDS = {
-    1: ['name', 'age', 'gender', 'admissionDate'] as const,
-    2: ['course'] as const,
-    3: [] as const,
+    1: ['name', 'age', 'gender'] as const,
+    2: ['course', 'admissionDate'] as const,
+    3: ['hobby'] as const,
 };
 
 export function useFormSteps(totalSteps: number, trigger: UseFormTrigger<StudentFormData>) {

@@ -20,19 +20,20 @@ export function FormNavigationButtons({
     const isLastStep = currentStep === totalSteps;
 
     return (
-        <div className="mt-8 flex items-center justify-between pt-6 border-t">
+        <div className="mt-8 flex items-center justify-between">
             <Button
                 type="button"
                 variant="outline"
                 onClick={onPrevious}
                 disabled={isFirstStep || isSubmitting}
+                className='cursor-pointer'
             >
                 <ArrowLeft className="w-4 h-4 mr-2" />
                 Previous
             </Button>
 
             {isLastStep ? (
-                <Button type="submit" disabled={isSubmitting}>
+                <Button type="submit" disabled={isSubmitting} className='cursor-pointer'>
                     {isSubmitting ? (
                         <>
                             <Loader2 className="w-4 h-4 mr-2 animate-spin" />
@@ -46,7 +47,7 @@ export function FormNavigationButtons({
                     )}
                 </Button>
             ) : (
-                <Button type="button" onClick={onNext} disabled={isSubmitting}>
+                <Button type="button" onClick={onNext} disabled={isSubmitting} className='cursor-pointer'>
                     Next
                     <ArrowRight className="w-4 h-4 ml-2" />
                 </Button>
