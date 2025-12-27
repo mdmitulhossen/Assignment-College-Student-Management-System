@@ -1,8 +1,9 @@
+import { EmptyState } from '@/components/shared/EmptyState';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent } from '@/components/ui/card';
 import { Student } from '@/store/student-store';
 import { formatDate } from '@/utils/format.utils';
-import { Calendar, GraduationCap, Hash, Heart, User, Users } from 'lucide-react';
+import { Calendar, GraduationCap, Hash, Heart, User } from 'lucide-react';
 import { StudentActions } from './StudentActions';
 
 interface StudentCardViewProps {
@@ -18,15 +19,15 @@ export function StudentCardView({
     onEdit,
     onDelete,
 }: StudentCardViewProps) {
+
     if (students.length === 0) {
         return (
-            <div className="text-center py-12">
-                <Users className="mx-auto h-12 w-12 text-muted-foreground" />
-                <h3 className="mt-4 text-lg font-semibold">No students found</h3>
-                <p className="mt-2 text-sm text-muted-foreground">
-                    Try adjusting your search or filter criteria
-                </p>
-            </div>
+            <EmptyState
+                title="No students found"
+                description="Try adjusting your search or filter criteria"
+                actionLabel="Add Student"
+                actionHref="/students/new"
+            />
         );
     }
 
