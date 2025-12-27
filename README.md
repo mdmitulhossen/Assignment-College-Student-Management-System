@@ -16,6 +16,10 @@ A modern web application for managing college student records with a clean, resp
 - ✅ **Data Persistence** - All data is stored locally using local storage
 - ✅ **Soft Delete & Restore** - Delete students with undo/restore option from the list or view page
 
+## Live Demo
+
+🔗 **Live Demo:** [student-management-system-zeta-one.vercel.app](https://student-management-system-zeta-one.vercel.app)
+
 ## Screenshots
 
 | Dashboard (Light) | Dashboard (Dark) |
