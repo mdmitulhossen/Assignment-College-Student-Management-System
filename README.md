@@ -1,36 +1,166 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# College Student Management System
 
-## Getting Started
+A modern web application for managing college student records with a clean, responsive UI and powerful features.
 
-First, run the development server:
+## Features
+
+- ✅ **Student CRUD Operations** - Create, Read, Update, and Delete student records
+- ✅ **Multi-Step Form** - Organized form with step-by-step data entry
+- ✅ **Draft Auto-Save** - Automatically saves form progress to prevent data loss
+- ✅ **Search & Filter** - Search students by name/ID and filter by course, gender, hobby, status
+- ✅ **Multiple Views** - Switch between table and card views
+- ✅ **Sorting** - Sort students by name, age, admission date
+- ✅ **Dashboard Analytics** - View statistics and insights about students
+- ✅ **Responsive Design** - Works seamlessly on desktop, tablet, and mobile devices
+- ✅ **Dark/Light Theme** - Theme support with system preference detection
+- ✅ **Data Persistence** - All data is stored locally using browser storage
+
+## Setup Instructions
+
+### Prerequisites
+
+- Node.js 18+ installed on your system
+- npm, yarn, pnpm, or bun package manager
+
+### Installation
+
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/mdmitulhossen/Assignment-College-Student-Management-System.git
+   cd Assignment-College-Student-Management-System
+   ```
+
+2. **Install dependencies**
+   ```bash
+   npm install
+   # or
+   yarn install
+   # or
+   pnpm install
+   ```
+
+3. **Run the development server**
+   ```bash
+   npm run dev
+   # or
+   yarn dev
+   # or
+   pnpm dev
+   ```
+
+4. **Open your browser**
+   
+   Navigate to [http://localhost:3000](http://localhost:3000) to see the application.
+
+### Build for Production
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm run build
+npm start
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Tech Stack Used
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Frontend Framework
+- **Next.js 15** - React framework with App Router
+- **React 19** - UI library
+- **TypeScript** - Type-safe JavaScript
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Styling
+- **Tailwind CSS** - Utility-first CSS framework
+- **shadcn/ui** - Re-usable component library
+- **tw-animate-css** - Animation utilities
 
-## Learn More
+### State Management
+- **Zustand** - Lightweight state management with persistence middleware
 
-To learn more about Next.js, take a look at the following resources:
+### Form Management
+- **React Hook Form** - Performant form handling
+- **Zod** - Schema validation
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### UI Components & Icons
+- **Lucide React** - Beautiful & consistent icon pack
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Code Quality
+- **ESLint** - Code linting
+- **TypeScript** - Static type checking
 
-## Deploy on Vercel
+## Project Structure
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```
+src/
+├── app/                    # Next.js app router pages
+├── components/             # React components
+│   ├── dashboard/         # Dashboard-specific components
+│   ├── students/          # Student management components
+│   ├── ui/                # Reusable UI components (shadcn/ui)
+│   └── ...
+├── hooks/                 # Custom React hooks
+├── lib/                   # Utility functions and constants
+│   ├── schemas/          # Zod validation schemas
+│   ├── utils/            # Helper functions
+│   └── constants/        # Application constants
+└── store/                # Zustand state management
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Assumptions Made
+
+### Data Storage
+- All student data is stored in **browser's localStorage** using Zustand persist middleware
+- No backend or database is required
+- Data persists across browser sessions but is device-specific
+
+### Student ID Generation
+- Student IDs are auto-generated in the format `S_ID00001`, `S_ID00002`, etc.
+- IDs are sequential and unique within the local storage
+- IDs cannot be manually edited by users
+
+### Form Validation
+- **Age**: Must be between 16 and 60 years
+- **Name**: Minimum 3 characters, maximum 100 characters
+- **Admission Date**: Cannot be in the future
+- **Course**: Required field, free text input
+- **Gender**: Options - Male, Female, Other
+- **Hobby**: Options - Reading, Travelling, Movies, Games
+
+### Draft Functionality
+- Form drafts are auto-saved every 500ms while typing
+- Drafts are only saved for **new student creation** (add mode)
+- Edit mode does not use draft functionality to prevent conflicts
+- Drafts are automatically cleared after successful submission
+- Only one draft is maintained at a time
+
+### Student Status
+- Students have two statuses: **Active** and **Deleted**
+- Deleted students are soft-deleted (not permanently removed)
+- Deleted students can be restored
+- Filters allow viewing active, deleted, or all students
+
+### UI/UX Assumptions
+- The application is designed for single-user use (no authentication)
+- No role-based access control is implemented
+- The sidebar can be collapsed/expanded for better space utilization
+- Theme preference is stored in localStorage
+- The application is optimized for modern browsers (Chrome, Firefox, Edge, Safari)
+
+### Performance
+- Client-side rendering is used for all pages
+- No pagination is implemented (suitable for small to medium datasets)
+- All filtering and sorting happens on the client-side
+
+## Available Scripts
+
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm start` - Start production server
+- `npm run lint` - Run ESLint for code quality
+
+
+## License
+
+This project is developed as an assignment for educational purposes.
+
+## Author
+
+**Md Mitul Hossen**  
+[GitHub](https://github.com/mdmitulhossen)
