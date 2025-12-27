@@ -7,9 +7,9 @@ A modern web application for managing college student records with a clean, resp
 - ✅ **Student CRUD Operations** - Create, Read, Update, and Delete student records
 - ✅ **Multi-Step Form** - Organized form with step-by-step data entry
 - ✅ **Draft Auto-Save** - Automatically saves form progress to prevent data loss
-- ✅ **Search & Filter** - Search students by name and filter by course, gender, hobby, status
+- ✅ **Search & Filter** - Search students by name and filter by course, gender, status
 - ✅ **Multiple Views** - Switch between table and card views
-- ✅ **Sorting** - Sort students by name, age, admission date
+- ✅ **Sorting** - Sort students by name, admission date
 - ✅ **Dashboard Analytics** - View statistics and insights about students
 - ✅ **Responsive Design** - Works seamlessly on desktop, tablet, and mobile devices
 - ✅ **Dark/Light Theme** - Theme support with system preference detection
