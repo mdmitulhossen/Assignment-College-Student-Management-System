@@ -41,7 +41,7 @@ export function GenderDistributionCard({ distribution, totalStudents }: GenderDi
             <CardContent className="pt-6">
                 <div className="flex items-center justify-between mb-6 flex-wrap">
                     <CardHeading title="Gender Distribution" />
-                    <span className="text-gray-600 bg-gray-100 inline-block px-4 py-2 rounded-md">Total: {totalStudents}</span>
+                    <span className="text-gray-600 bg-gray-100 dark:bg-gray-800 dark:text-gray-300 inline-block px-4 py-2 rounded-md">Total: {totalStudents}</span>
                 </div>
                 <div className="space-y-4">
                     <GenderBar

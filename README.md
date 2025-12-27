@@ -7,13 +7,44 @@ A modern web application for managing college student records with a clean, resp
 - ✅ **Student CRUD Operations** - Create, Read, Update, and Delete student records
 - ✅ **Multi-Step Form** - Organized form with step-by-step data entry
 - ✅ **Draft Auto-Save** - Automatically saves form progress to prevent data loss
-- ✅ **Search & Filter** - Search students by name/ID and filter by course, gender, hobby, status
+- ✅ **Search & Filter** - Search students by name and filter by course, gender, hobby, status
 - ✅ **Multiple Views** - Switch between table and card views
 - ✅ **Sorting** - Sort students by name, age, admission date
 - ✅ **Dashboard Analytics** - View statistics and insights about students
 - ✅ **Responsive Design** - Works seamlessly on desktop, tablet, and mobile devices
 - ✅ **Dark/Light Theme** - Theme support with system preference detection
-- ✅ **Data Persistence** - All data is stored locally using browser storage
+- ✅ **Data Persistence** - All data is stored locally using local storage
+- ✅ **Soft Delete & Restore** - Delete students with undo/restore option from the list or view page
+
+## Screenshots
+
+| Dashboard (Light) | Dashboard (Dark) |
+|:----------------:|:----------------:|
+| ![Dashboard](public/screenshots/dashboard.png) | ![Dashboard Dark](public/screenshots/dashboard-dark.png) |
+
+| Student List Table | Student List Table (Dark) |
+|:-----------------:|:-----------------------:|
+| ![Student List Table](public/screenshots/student-list-table-page.png) | ![Student List Table Dark](public/screenshots/student-list-table-page-dark.png) |
+
+| Student List Grid | Student List Grid (Dark) |
+|:----------------:|:----------------------:|
+| ![Student List Grid](public/screenshots/student-list-grid-page.png) | ![Student List Grid Dark](public/screenshots/student-list-grid-page-dark.png) |
+
+| Filter | Add Student (Step 1) | Add Student (Step 2) | Add Student (Step 3) |
+|:------:|:--------------------:|:--------------------:|:--------------------:|
+| ![Filter](public/screenshots/filter.png) | ![Add Student 1](public/screenshots/add-student-form1.png) | ![Add Student 2](public/screenshots/add-student-form2.png) | ![Add Student 3](public/screenshots/add-student-form3.png) |
+
+| Edit Student (Dark) | Student View | Student View (Restore, Dark) | Delete Warning |
+|:-------------------:|:------------:|:---------------------------:|:--------------:|
+| ![Edit Student Dark](public/screenshots/edit-student-form-dark.png) | ![Student View](public/screenshots/student-view.png) | ![Student View Restore Dark](public/screenshots/student-view-with-restore-dark.png) | ![Delete Warning](public/screenshots/delete-warning.png) |
+
+**Mobile Views**
+
+| Add Student (Mobile) | Dashboard (Mobile) | Dashboard (Mobile, Light) | Student List (Mobile) |
+|:-------------------:|:------------------:|:------------------------:|:---------------------:|
+| ![Mobile Add Student](public/screenshots/mobile-view-add-student.png) | ![Mobile Dashboard](public/screenshots/mobile-view-dashboard.png) | ![Mobile Dashboard Light](public/screenshots/mobile-view-dashboard-light.png) | ![Mobile Student List](public/screenshots/mobile-view-student-list.png) |
+
+---
 
 ## Setup Instructions
 
@@ -141,12 +172,7 @@ src/
 - No role-based access control is implemented
 - The sidebar can be collapsed/expanded for better space utilization
 - Theme preference is stored in localStorage
-- The application is optimized for modern browsers (Chrome, Firefox, Edge, Safari)
 
-### Performance
-- Client-side rendering is used for all pages
-- No pagination is implemented (suitable for small to medium datasets)
-- All filtering and sorting happens on the client-side
 
 ## Available Scripts
 
