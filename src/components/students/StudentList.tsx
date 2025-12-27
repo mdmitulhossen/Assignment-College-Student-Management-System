@@ -86,7 +86,7 @@ export function StudentList() {
                 onResetFilters={handleResetFilters}
             />
 
-            <div className="card-box bg-card">
+            <div className="card-box">
                 {viewMode === 'table' ? (
                     <StudentTableView
                         students={processedStudents}

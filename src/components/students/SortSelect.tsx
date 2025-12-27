@@ -16,7 +16,7 @@ export function SortSelect({
     onFieldChange,
     onOrderChange,
 }: SortSelectProps) {
-    // Combine field and order into a single value
+
     const combinedValue = `${field}-${order}`;
 
     const handleChange = (value: string) => {

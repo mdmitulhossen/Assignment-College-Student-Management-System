@@ -33,7 +33,7 @@ export function StudentCardView({
     return (
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {students.map((student) => (
-                <Card key={student.id} className="hover:shadow-md transition-shadow">
+                <Card key={student.id} className="card-box">
                     <CardContent className="p-6">
                         <div className="flex items-start justify-between mb-4">
                             <div className="flex-1">

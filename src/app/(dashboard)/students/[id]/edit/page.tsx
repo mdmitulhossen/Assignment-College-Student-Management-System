@@ -13,7 +13,6 @@ export default function EditStudentPage() {
     const student = getStudentById(studentId);
 
     useEffect(() => {
-        // Simulate loading for better UX
         const timer = setTimeout(() => {
             setIsLoading(false);
         }, 300);
@@ -56,5 +55,9 @@ export default function EditStudentPage() {
         );
     }
 
-    return <StudentForm mode="edit" initialData={student} />;
+    return (
+        <div className="min-h-screen bg-background py-8 px-4 sm:px-6 lg:px-8 rounded-xl">
+            <StudentForm mode="edit" initialData={student} />
+        </div>
+    );
 }

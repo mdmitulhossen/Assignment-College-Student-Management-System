@@ -49,13 +49,11 @@ export function Modal({
 
     return (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 overflow-y-auto">
-            {/* Backdrop */}
             <div
                 className="fixed inset-0 bg-black/50 backdrop-blur-sm animate-in fade-in duration-200"
                 onClick={onClose}
             />
 
-            {/* Modal */}
             <div
                 className={`relative bg-card border border-border rounded-lg shadow-lg w-full ${sizeClasses[size]} my-8 animate-in zoom-in-95 fade-in duration-200 max-h-[90vh] flex flex-col`}
             >
@@ -77,7 +75,7 @@ export function Modal({
                     </Button>
                 </div>
 
-                {/* Content - Scrollable */}
+                {/* Content  */}
                 <div className="p-4 sm:p-6 overflow-y-auto flex-1">{children}</div>
             </div>
         </div>

@@ -93,11 +93,6 @@ export const HOBBY_MAP: Record<string, string> = {
     james: 'Photography',
 } as const;
 
-/**
- * Get hobby based on email
- * @param email - Email to check
- * @returns Hobby name
- */
 export function getHobbyFromEmail(email: string): string {
     const entry = Object.entries(HOBBY_MAP).find(([key]) => email.includes(key));
     return entry ? entry[1] : 'Movies';

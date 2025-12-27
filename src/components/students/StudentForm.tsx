@@ -51,7 +51,7 @@ export function StudentForm({ mode = 'add', initialData }: StudentFormProps) {
 
     const { isSubmitting, submitStudent } = useStudentSubmission(mode, initialData?.id);
 
-    // Handle manual submit button click
+    // Handle submit button
     const handleManualSubmit = async () => {
         const isValid = await trigger();
         if (!isValid) return;

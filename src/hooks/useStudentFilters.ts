@@ -15,24 +15,19 @@ interface UseStudentFiltersProps {
 }
 
 interface UseStudentFiltersReturn {
-    // Processed data
     processedStudents: Student[];
 
-    // Filter state
     filters: StudentFilters;
     setFilters: React.Dispatch<React.SetStateAction<StudentFilters>>;
 
-    // Sort state
     sort: StudentSort;
     setSort: React.Dispatch<React.SetStateAction<StudentSort>>;
 
-    // Actions
     handleFilterChange: (key: keyof StudentFilters, value: string) => void;
     handleSortFieldChange: (field: StudentSort['field']) => void;
     handleSortOrderChange: (order: StudentSort['order']) => void;
     handleResetFilters: () => void;
 
-    // Stats
     totalCount: number;
     filteredCount: number;
 }

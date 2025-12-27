@@ -30,13 +30,12 @@ const TopBar = ({ subtitle }: TopBarProps) => {
 
     return (
         <div className="sticky top-0 z-30 flex items-center justify-between bg-card/95 backdrop-blur-md px-4 2xl:px-8 py-2 shadow-sm border-b">
-            {/* Toggle Button */}
             <button
                 onClick={handleToggle}
                 className="flex h-10 w-10 items-center group justify-center rounded-lg transition-colors mr-2 sm:mr-4 cursor-pointer hover:bg-accent"
                 aria-label="Toggle sidebar"
             >
-                {/* Mobile: Menu/Close icon */}
+                {/* Mobile View: Menu icon */}
                 <span className="lg:hidden">
                     {isMobileOpen ? <X className="h-6 w-6 text-primary/70 group-hover:text-primary" /> : <Menu className="h-6 w-6 text-primary/70 group-hover:text-primary" />}
                 </span>

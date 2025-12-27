@@ -50,7 +50,6 @@ export function StudentFiltersBar({
 
     return (
         <div className="space-y-4">
-            {/* First Row: Search, View Toggle, Reset */}
             <div className="flex gap-3 items-start sm:items-center justify-between">
                 <div className="flex-1 w-full sm:w-auto">
                     <SearchBar
@@ -77,7 +76,7 @@ export function StudentFiltersBar({
                 </div>
             </div>
 
-            {/* Second Row: Filters and Sort */}
+            {/* Second Row */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
                 <FilterDropdown
                     label="Gender"
