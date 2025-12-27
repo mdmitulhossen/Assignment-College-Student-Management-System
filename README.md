@@ -7,14 +7,14 @@ A modern web application for managing college student records with a clean, resp
 - ✅ **Student CRUD Operations** - Create, Read, Update, and Delete student records
 - ✅ **Multi-Step Form** - Organized form with step-by-step data entry
 - ✅ **Draft Auto-Save** - Automatically saves form progress to prevent data loss
-- ✅ **Search & Filter** - Search students by name and filter by course, gender, status
+- ✅ **Search & Filter** - Search students by name and filter by course, gender, status with debounce
 - ✅ **Multiple Views** - Switch between table and card views
 - ✅ **Sorting** - Sort students by name, admission date
 - ✅ **Dashboard Analytics** - View statistics and insights about students
 - ✅ **Responsive Design** - Works seamlessly on desktop, tablet, and mobile devices
-- ✅ **Dark/Light Theme** - Theme support with system preference detection
+- ✅ **Dark/Light Theme** - Theme support with dark and light
 - ✅ **Data Persistence** - All data is stored locally using local storage
-- ✅ **Soft Delete & Restore** - Delete students with undo/restore option from the list or view page
+- ✅ **Soft Delete & Restore** - Delete students with undo/restore option from the  view modal
 
 ## Live Demo
 
@@ -176,6 +176,7 @@ src/
 - No role-based access control is implemented
 - The sidebar can be collapsed/expanded for better space utilization
 - Theme preference is stored in localStorage
+- Dark mode & light mode toggle
 
 
 ## Available Scripts
