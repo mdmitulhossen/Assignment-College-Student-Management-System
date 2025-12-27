@@ -2,7 +2,7 @@ import { Badge } from '@/components/ui/badge';
 import { Card, CardContent } from '@/components/ui/card';
 import { Student } from '@/store/student-store';
 import { formatDate } from '@/utils/format.utils';
-import { Calendar, GraduationCap, Heart, User, Users } from 'lucide-react';
+import { Calendar, GraduationCap, Hash, Heart, User, Users } from 'lucide-react';
 import { StudentActions } from './StudentActions';
 
 interface StudentCardViewProps {
@@ -54,6 +54,10 @@ export function StudentCardView({
                         </div>
 
                         <div className="space-y-2 text-sm">
+                            <div className="flex items-center gap-2 text-muted-foreground">
+                                <Hash className="h-4 w-4" />
+                                <span>{student.id}</span>
+                            </div>
                             <div className="flex items-center gap-2 text-muted-foreground">
                                 <GraduationCap className="h-4 w-4" />
                                 <span>{student.course}</span>

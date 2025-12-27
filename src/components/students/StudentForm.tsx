@@ -108,6 +108,7 @@ export function StudentForm({ mode = 'add', initialData }: StudentFormProps) {
 
             <StepIndicator steps={FORM_STEPS} currentStep={currentStep} className="mb-8" />
 
+
             <form
                 onSubmit={handleFormSubmit}
                 onKeyDown={handleKeyDown}

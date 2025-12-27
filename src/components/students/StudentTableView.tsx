@@ -19,6 +19,11 @@ export function StudentTableView({
 }: StudentTableViewProps) {
     const columns: Column<Student>[] = [
         {
+            header: '#S_ID',
+            accessor: 'id',
+            className: 'font-medium',
+        },
+        {
             header: 'Name',
             accessor: 'name',
             className: 'font-medium',

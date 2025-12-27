@@ -50,7 +50,7 @@ export function FormNavigationButtons({
                         </>
                     ) : (
                         <>
-                            <Check className="w-4 h-4 mr-2" />
+                            <Check className="w-4 h-4" />
                             {submitText}
                         </>
                     )}

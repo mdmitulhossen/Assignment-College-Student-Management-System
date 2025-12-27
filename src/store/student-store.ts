@@ -1,3 +1,4 @@
+import { generateStudentId } from '@/lib/utils/student-id.utils';
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 
@@ -37,7 +38,7 @@ export const useStudentStore = create<StudentStore>()(
                         ...state.students,
                         {
                             ...student,
-                            id: crypto.randomUUID(),
+                            id: generateStudentId(state.students),
                             status: 'Active' as const,
                             createdAt: new Date(),
                             updatedAt: new Date(),

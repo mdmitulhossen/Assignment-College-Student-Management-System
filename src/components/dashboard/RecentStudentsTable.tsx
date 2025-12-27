@@ -17,6 +17,7 @@ import { Badge } from '../ui/badge';
 
 export function RecentStudentsTable() {
     const recentStudents = useRecentStudents(5);
+    console.log(recentStudents, 'abc')
     const {
         viewModalOpen,
         deleteModalOpen,
@@ -32,12 +33,22 @@ export function RecentStudentsTable() {
 
     const columns: Column<Student>[] = [
         {
-            header: 'Student',
+            header: '#S_ID',
             cell: (student) => (
                 <div className="flex items-center gap-3">
                     <div className="h-10 w-10 rounded-full bg-teal-50 flex items-center justify-center text-white font-semibold shrink-0">
                         <User className="h-6 w-6 text-teal-950" />
                     </div>
+                    <div>
+                        <p className="font-semibold">{student.id}</p>
+                    </div>
+                </div>
+            ),
+        },
+        {
+            header: 'Name',
+            cell: (student) => (
+                <div className="flex items-center gap-3">
                     <div>
                         <p className="font-semibold">{student.name}</p>
                     </div>

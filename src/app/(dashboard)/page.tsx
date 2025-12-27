@@ -15,15 +15,11 @@ const DashboardPage = () => {
     return (
         <div className="space-y-6">
             <DashboardHeader />
-
-            {/* Statistics Cards */}
             <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
                 {DASHBOARD_STATS.map((config) => (
                     <StatCard key={config.key} config={config} value={stats[config.key]} />
                 ))}
             </div>
-
-            {/* Charts Section */}
             <div className="grid gap-6 grid-cols-1 lg:grid-cols-2">
                 <GenderDistributionCard
                     distribution={stats.genderDistribution}
@@ -32,7 +28,6 @@ const DashboardPage = () => {
                 <TopCoursesCard courses={stats.topCourses} />
             </div>
 
-            {/* Recent Students Table */}
             <RecentStudentsTable />
         </div>
     );
