@@ -59,7 +59,7 @@ export function StudentList() {
     ];
 
     return (
-        <div className="space-y-6">
+        <div className="space-y-6 min-h-[85vh]">
             <PageHeader
                 title="Students"
                 subtitle="Manage and view all student records"
