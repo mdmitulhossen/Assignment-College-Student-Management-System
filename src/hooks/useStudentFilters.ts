@@ -4,8 +4,8 @@ import {
     StudentFilters,
     StudentSort,
 } from '@/lib/types/student-list.types';
-import { sortStudents } from '@/lib/utils/student-list.utils';
 import { Student } from '@/store/student-store';
+import { sortStudents } from '@/utils/student-list.utils';
 import { debounce } from 'lodash';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 
@@ -45,7 +45,6 @@ export function useStudentFilters({
     const [sort, setSort] = useState<StudentSort>(INITIAL_SORT);
     const [debouncedSearch, setDebouncedSearch] = useState('');
 
-    // Debounced search handler
     const debouncedSearchHandler = useMemo(
         () =>
             debounce((value: string) => {
@@ -54,17 +53,14 @@ export function useStudentFilters({
         [debounceDelay]
     );
 
-    // Update debounced search term when filters.search changes
     useEffect(() => {
         debouncedSearchHandler(filters.search);
-
-        // Cleanup debounce on unmount
         return () => {
             debouncedSearchHandler.cancel();
         };
     }, [filters.search, debouncedSearchHandler]);
 
-    // Process students with filters, sort, and search
+
     const processedStudents = useMemo(() => {
         let result = students;
 
@@ -99,7 +95,7 @@ export function useStudentFilters({
         return result;
     }, [students, filters.gender, filters.course, filters.status, sort, debouncedSearch]);
 
-    // Filter change handler
+
     const handleFilterChange = useCallback(
         (key: keyof StudentFilters, value: string) => {
             setFilters((prev) => ({ ...prev, [key]: value }));
@@ -125,24 +121,15 @@ export function useStudentFilters({
     }, []);
 
     return {
-        // Processed data
         processedStudents,
-
-        // Filter state
         filters,
         setFilters,
-
-        // Sort state
         sort,
         setSort,
-
-        // Actions
         handleFilterChange,
         handleSortFieldChange,
         handleSortOrderChange,
         handleResetFilters,
-
-        // Stats
         totalCount: students.length,
         filteredCount: processedStudents.length,
     };

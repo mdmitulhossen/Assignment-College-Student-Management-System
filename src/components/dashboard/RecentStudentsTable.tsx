@@ -17,7 +17,6 @@ import { Badge } from '../ui/badge';
 
 export function RecentStudentsTable() {
     const recentStudents = useRecentStudents(5);
-    console.log(recentStudents, 'abc')
     const {
         viewModalOpen,
         deleteModalOpen,

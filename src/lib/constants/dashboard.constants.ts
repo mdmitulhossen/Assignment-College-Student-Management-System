@@ -75,11 +75,7 @@ export const AVATAR_COLORS = [
     'bg-orange-500',
 ] as const;
 
-/**
- * Get avatar color by index
- * @param index - Index to determine color
- * @returns Tailwind background color class
- */
+
 export function getAvatarColor(index: number): string {
     return AVATAR_COLORS[index % AVATAR_COLORS.length];
 }

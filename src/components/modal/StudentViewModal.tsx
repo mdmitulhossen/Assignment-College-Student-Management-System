@@ -142,7 +142,7 @@ export function StudentViewModal({
                                     onDelete(student);
                                     onClose();
                                 }}
-                                className="gap-2 w-full sm:w-auto"
+                                className="gap-2 w-full sm:w-auto text-white!"
                             >
                                 <Trash2 className="h-4 w-4" />
                                 Delete

@@ -1,7 +1,7 @@
 
 import { CardHeading } from '@/components/shared/CardHeading';
 import { type GenderDistribution } from '@/hooks/useDashboardStats';
-import { GENDER_COLORS } from '@/lib/dashboard.constants';
+import { GENDER_COLORS } from '@/lib/constants/dashboard.constants';
 import { Card, CardContent } from '../ui/card';
 
 interface GenderDistributionCardProps {

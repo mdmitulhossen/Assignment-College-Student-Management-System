@@ -19,11 +19,7 @@ export const studentSchema = z.object({
         .refine((date) => date <= new Date(), {
             message: 'Admission date cannot be in the future',
         }),
-
-    // Academic Information
     course: z.string({ message: 'Course is required' }).min(1, 'Course is required'),
-
-    // Personal Information
     hobby: z.enum(['Reading', 'Travelling', 'Movies', 'Games'], {
         message: 'Hobby is required',
     }),

@@ -62,7 +62,7 @@ export function ConfirmationModal({
                         variant={variant}
                         onClick={handleConfirm}
                         disabled={isLoading}
-                        className="min-w-24 w-full sm:w-auto"
+                        className="min-w-24 w-full sm:w-auto text-white!"
                     >
                         {isLoading ? 'Processing...' : confirmText}
                     </Button>

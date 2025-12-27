@@ -1,5 +1,5 @@
 
-import { STAT_CARD_BORDERS, STAT_CARD_COLORS, type StatConfig } from '@/lib/dashboard.constants';
+import { STAT_CARD_BORDERS, STAT_CARD_COLORS, type StatConfig } from '@/lib/constants/dashboard.constants';
 import { cn } from '@/lib/utils';
 import { TrendingDown, TrendingUp } from 'lucide-react';
 import { Card, CardContent } from '../ui/card';
