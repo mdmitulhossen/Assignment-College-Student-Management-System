@@ -162,4 +162,30 @@
     scrollbar-width: thin;
     scrollbar-color: var(--primary) transparent;
   }
+
+  /* Custom Animations */
+  @keyframes bounce-slow {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  .animate-bounce-slow {
+    animation: bounce-slow 3s ease-in-out infinite;
+  }
+
+  /* Grid Pattern for Background */
+  .bg-grid-pattern {
+    background-image: linear-gradient(
+        to right,
+        currentColor 1px,
+        transparent 1px
+      ),
+      linear-gradient(to bottom, currentColor 1px, transparent 1px);
+    background-size: 20px 20px;
+  }
 }

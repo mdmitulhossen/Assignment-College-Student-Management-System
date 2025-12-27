@@ -17,8 +17,6 @@ export function useStudentSubmission(mode: 'add' | 'edit' = 'add', studentId?: s
         try {
             const cleanedData = {
                 ...data,
-                email: data.email || undefined,
-                phone: data.phone || undefined,
             };
 
             if (mode === 'edit' && studentId) {

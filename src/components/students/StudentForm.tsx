@@ -35,8 +35,6 @@ export function StudentForm({ mode = 'add', initialData }: StudentFormProps) {
                 course: initialData.course,
                 hobby: initialData.hobby,
                 admissionDate: initialData.admissionDate,
-                email: initialData.email || '',
-                phone: initialData.phone || '',
             }
             : undefined,
     });
@@ -85,8 +83,6 @@ export function StudentForm({ mode = 'add', initialData }: StudentFormProps) {
                 course: initialData.course,
                 hobby: initialData.hobby,
                 admissionDate: initialData.admissionDate,
-                email: initialData.email || '',
-                phone: initialData.phone || '',
             });
         }
     }, [initialData, mode, reset]);

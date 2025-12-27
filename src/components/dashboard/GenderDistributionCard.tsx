@@ -16,7 +16,7 @@ interface GenderBarProps {
     colorClass: string;
 }
 
-function GenderBar({ label, count, percentage, colorClass }: GenderBarProps) {
+function GenderBar({ label, count, percentage }: GenderBarProps) {
     return (
         <div>
             <div className="flex items-center justify-between mb-2">

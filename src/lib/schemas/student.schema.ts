@@ -7,7 +7,7 @@ export const studentSchema = z.object({
         .min(3, 'Name must be at least 3 characters')
         .max(100, 'Name must not exceed 100 characters'),
     age: z
-        .number({ message: 'Age must be a number' })
+        .number({ message: 'Age must be a number between 16 and 60' })
         .int('Age must be a whole number')
         .min(16, 'Age must be at least 16')
         .max(60, 'Age must not exceed 60'),
@@ -27,8 +27,6 @@ export const studentSchema = z.object({
     hobby: z.enum(['Reading', 'Travelling', 'Movies', 'Games'], {
         message: 'Hobby is required',
     }),
-    email: z.string().email('Invalid email address').optional().or(z.literal('')),
-    phone: z.string().optional().or(z.literal('')),
 });
 
 export type StudentFormData = z.infer<typeof studentSchema>;
@@ -47,8 +45,6 @@ export const academicInfoSchema = studentSchema.pick({
 
 export const personalInfoSchema = studentSchema.pick({
     hobby: true,
-    email: true,
-    phone: true,
 });
 
 export type BasicInfoData = z.infer<typeof basicInfoSchema>;
